@@ -26,12 +26,12 @@ app.listen(port, () => {
 
 
 // ************ Route System require and use() ************ //
-//const applicantRoutes = require('./routes/aaplicantRoutes');
+const applicantRoutes = require('./routes/applicant.routes.js');
 
 const professionRoutes = require('./routes/profession.routes.js');
 
-//app.use('/applicants', applicantRoutes);
-//app.use('/professions', professionRoutes);
+app.use('/api/applicants', applicantRoutes);
+// app.use('/professions', professionRoutes);
 app.use('/api', professionRoutes);
 
 
