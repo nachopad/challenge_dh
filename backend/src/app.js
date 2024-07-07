@@ -27,10 +27,12 @@ app.listen(port, () => {
 
 // ************ Route System require and use() ************ //
 //const applicantRoutes = require('./routes/aaplicantRoutes');
-//const professionRoutes = require('./routes/professionRoutes');
+
+const professionRoutes = require('./routes/profession.routes.js');
 
 //app.use('/applicants', applicantRoutes);
 //app.use('/professions', professionRoutes);
+app.use('/api', professionRoutes);
 
 
 // ************ 404 Not Found Route System ************ //
