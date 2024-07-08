@@ -1,15 +1,16 @@
 import { Routes, Route } from 'react-router-dom'
-import './App.css'
+import Home from '../components/Home'
+import AspirantsDetailID from '../components/Apirants/AspirantsDetailID'
 
 const routes = [
   {
     path: '/',
-    component: "Colocar el componente acá",
+    component: <Home />,
     exact: true
   },
   {
-    path: '/example',
-    component: <div style={{ padding: "1rem", background: "#f09" }}>Ejemplo</div>,
+    path: '/aspirant/:id',
+    component: <AspirantsDetailID />,
     exact: true
   }
 
@@ -35,7 +36,6 @@ function App() {
 
   return (
     <>
-      <h1>Hello World!</h1>
       <Routes>
         {routes.map((route, index) => (
           <Route
