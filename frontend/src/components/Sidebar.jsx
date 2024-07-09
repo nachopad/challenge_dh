@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 function Sidebar() {
   return (
@@ -7,7 +8,8 @@ function Sidebar() {
           <div className="user-avatar">
             <img src="../src/assets/img/logo-dh.png" alt="Logo Digital House" />
           </div>
-          <figcaption>Digital House</figcaption>
+          <NavLink to="/" className="text-decoration-none"><figcaption>Digital House</figcaption></NavLink>
+          
         </figure>
         <nav>
           <section className="menu">
@@ -20,10 +22,11 @@ function Sidebar() {
                 </a>
               </li>
               <li>
-                <a href="#">
-                  <i className="bi bi-person" style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
+
+                <NavLink to="/aspirants" className="text-decoration-none">
+                  <i className="bi bi-person-plus" style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
                   - Aspirantes
-                </a>
+                </NavLink>
               </li>
               <li>
                 <a href="#">

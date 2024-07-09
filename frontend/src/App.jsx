@@ -1,12 +1,26 @@
-import { Routes, Route } from 'react-router-dom'
-import Home from '../components/Home'
-import AspirantsDetailID from '../components/Apirants/AspirantsDetailID'
+import { Routes, Route,BrowserRouter as Router } from 'react-router-dom'
+import Home from './components/Home'
+import AspirantsDetailID from './components/Apirants/AspirantsDetailID'
+import Sidebar from './components/Sidebar'
+import TopBar from './components/TopBar'
+import SearchAspirants from './components/Apirants/searchAspirant'
+import AspirantsList from './components/Apirants/aspirantsList'
 
 const routes = [
   {
     path: '/',
     component: <Home />,
     exact: true
+  },
+  {
+    path: '/search',
+    component: <SearchAspirants />,
+    exact: true
+  },
+  {
+    path: '/aspirants',
+    component: <div className="content-wrap"> <AspirantsList /> </div>,
+    exact: true 
   },
   {
     path: '/aspirant/:id',
@@ -36,6 +50,13 @@ function App() {
 
   return (
     <>
+      <div className="dashboard">
+      <section className="search-wrap">
+        <TopBar />
+      </section>
+      <header className="menu-wrap">
+        <Sidebar />
+      </header>
       <Routes>
         {routes.map((route, index) => (
           <Route
@@ -46,6 +67,7 @@ function App() {
           />
         ))}
       </Routes>
+      </div>
     </>
   )
 }
