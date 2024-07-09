@@ -1,10 +1,10 @@
 import { Routes, Route,BrowserRouter as Router } from 'react-router-dom'
 import Home from './components/Home'
-import AspirantsDetailID from './components/Apirants/AspirantsDetailID'
+import ApplicantDetail from './components/Applicants/ApplicantDetail'
 import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
-import SearchAspirants from './components/Apirants/searchAspirant'
-import AspirantsList from './components/Apirants/aspirantsList'
+import SearchBar from './components/Applicants/SearchBar'
+import ApplicantsList from './components/Applicants/ApplicantsList'
 
 const routes = [
   {
@@ -14,17 +14,17 @@ const routes = [
   },
   {
     path: '/search',
-    component: <SearchAspirants />,
+    component: <SearchBar />,
     exact: true
   },
   {
-    path: '/aspirants',
-    component: <div className="content-wrap"> <AspirantsList /> </div>,
+    path: '/applicants',
+    component: <div className="content-wrap"> <ApplicantsList /> </div>,
     exact: true 
   },
   {
-    path: '/aspirant/:id',
-    component: <AspirantsDetailID />,
+    path: '/applicant/:id',
+    component: <ApplicantDetail />,
     exact: true
   }
 

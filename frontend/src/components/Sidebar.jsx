@@ -1,4 +1,3 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 function Sidebar() {
@@ -6,7 +5,7 @@ function Sidebar() {
     <>
       <figure className="user">
           <div className="user-avatar">
-            <img src="../src/assets/img/logo-dh.png" alt="Logo Digital House" />
+            <img src="/assets/images/logo-dh.png" alt="Logo Digital House" />
           </div>
           <NavLink to="/" className="text-decoration-none"><figcaption>Digital House</figcaption></NavLink>
           
@@ -23,7 +22,7 @@ function Sidebar() {
               </li>
               <li>
 
-                <NavLink to="/aspirants" className="text-decoration-none">
+                <NavLink to="/applicants" className="text-decoration-none">
                   <i className="bi bi-person-plus" style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
                   - Aspirantes
                 </NavLink>
@@ -53,4 +52,4 @@ function Sidebar() {
   )
 }
 
-export default Sidebar
+export default Sidebar;

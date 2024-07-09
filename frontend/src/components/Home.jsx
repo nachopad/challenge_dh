@@ -1,10 +1,8 @@
-import React from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import AspirantsList from './Apirants/aspirantsList';
+import ApplicantsList from './Applicants/ApplicantsList';
 
 function Home() {
   return (
-    
       <main className="content-wrap">
         <header className="preventa">
           <h2>Búsqueda y selección</h2>
@@ -12,10 +10,10 @@ function Home() {
             Encontramos talento para tu empresa, en todos los cargos administrativos, profesionales y técnicos.
           </p>
           <div>
-            <img src="../src/assets/img/banner.jpg" alt="Rcursos Humanos" />
+            <img src="/assets/images/banner.jpg" alt="Rcursos Humanos" />
           </div>
         </header>
-        <AspirantsList />
+        <ApplicantsList />
         <section className="content profesiones">
           <h2 className="mt-3">Profesiones</h2>
           <div className="list-group shadow-sm p-3 mb-5 rounded">
