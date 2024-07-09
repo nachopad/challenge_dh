@@ -1,18 +1,10 @@
 import React from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import AspirantsList from './Apirants/aspirantsList';
-import Sidebar from './Sidebar';
-import TopBar from './TopBar';
 
 function Home() {
   return (
-    <div className="dashboard">
-      <section className="search-wrap">
-        <TopBar />
-      </section>
-      <header className="menu-wrap">
-        <Sidebar />
-      </header>
+    
       <main className="content-wrap">
         <header className="preventa">
           <h2>Búsqueda y selección</h2>
@@ -57,7 +49,6 @@ function Home() {
           </div>
         </section>
       </main>
-    </div>
   );
 }
 
