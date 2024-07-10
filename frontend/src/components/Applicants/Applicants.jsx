@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Aspirants = ( {props} ) => {
     return (
@@ -33,5 +34,18 @@ const Aspirants = ( {props} ) => {
         </>
     );
 }   
-
+Aspirants.propTypes = {
+  props: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    image: PropTypes.string,
+    first_name: PropTypes.string.isRequired,
+    last_name: PropTypes.string.isRequired,
+    professions: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        title: PropTypes.string.isRequired
+      })
+    ).isRequired
+  })
+}
 export default Aspirants;
