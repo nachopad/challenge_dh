@@ -19,8 +19,18 @@ function InitDataProvider({ children }) {
     })();
   }, []);
 
+  const fetchApplicantById = async (id) => {
+    try {
+      const response = await axios.get(`http://localhost:3000/api/applicants/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching applicant by ID:', error);
+      throw error;
+    }
+  };
+
   return (
-    <InitDataContext.Provider value={data}>{children}</InitDataContext.Provider>
+    <InitDataContext.Provider value={{ ...data, fetchApplicantById }}>{children}</InitDataContext.Provider>
   );
 }
 

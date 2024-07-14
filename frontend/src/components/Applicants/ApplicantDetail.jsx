@@ -1,12 +1,31 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import { InitDataContext } from '../../context/InitDataContext';
 
 function ApplicantDetail() {
     const { id } = useParams();
-    const { applicants } = useContext(InitDataContext);
-    const aspirantId = applicants?.data?.find((aspirant) => aspirant.id.toString() === id);
+    const { fetchApplicantById } = useContext(InitDataContext);
+    const [aspirantId, setAspirantId] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
+    useEffect(() => {
+        const fetchAspirant = async () => {
+        try {
+            const data = await fetchApplicantById(id);
+            setAspirantId(data.data);
+            setLoading(false);
+        } catch (error) {
+            setError(error);
+            setLoading(false);
+        }
+        };
+
+        fetchAspirant();
+    }, [id, fetchApplicantById]);
+
+    if (loading) return <p>Cargando...</p>;
+    if (error) return <p>Error al cargar el aspirante: {error.message}</p>;
     if (!aspirantId) {
         return <div>Aspirante no encontrado.</div>;
     }
