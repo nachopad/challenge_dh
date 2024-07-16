@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar'
 import TopBar from './components/TopBar'
 import SearchBar from './components/Applicants/SearchBar'
 import ApplicantsList from './components/Applicants/ApplicantsList'
+import ProfessionsList from './components/Professions/ProfessionsList'
 
 const routes = [
   {
@@ -26,7 +27,13 @@ const routes = [
     path: '/applicant/:id',
     component: <ApplicantDetail />,
     exact: true
+  },
+  {
+    path: '/professions',
+    component: <div className="content-wrap"> <ProfessionsList /> </div>,
+    exact: true 
   }
+  
 
   /*
   TODO: Eliminar este comentario y completar la lista de rutas
