@@ -6,6 +6,7 @@ import TopBar from './components/TopBar'
 import SearchBar from './components/Applicants/SearchBar'
 import ApplicantsList from './components/Applicants/ApplicantsList'
 import ProfessionsList from './components/Professions/ProfessionsList'
+import ApplicantForm from './components/Applicants/ApplicantForm'
 
 const routes = [
   {
@@ -27,6 +28,11 @@ const routes = [
     path: '/applicant/:id',
     component: <ApplicantDetail />,
     exact: true
+  },
+  {
+    path: '/applicants/register',
+    component: <div className="content-wrap"> <ApplicantForm /> </div>,
+    exact: true 
   },
   {
     path: '/professions',

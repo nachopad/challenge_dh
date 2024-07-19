@@ -20,22 +20,22 @@ function Sidebar() {
               </a>
             </li>
             <li>
-              <NavLink to="/applicants" className="text-decoration-none">
+              <NavLink to="/applicants" className="text-decoration-none gap-2">
                 <i className="bi bi-person-plus" style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
                   Aspirantes
               </NavLink>
             </li>
             <li>
-            <NavLink to="/professions" className="text-decoration-none">
+              <NavLink to="/professions" className="text-decoration-none gap-2">
                 <i className="bi bi-briefcase" style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
                   Profesiones
               </NavLink>
             </li>
             <li>
-              <a href="#">
-                <i className="bi bi-person-vcard" style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
-                  Postulate aquí
-              </a>
+              <NavLink to="/applicants/register" className="text-decoration-none gap-2">
+                <i className="bi bi-person-vcard " style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
+                  Registrate aqui
+              </NavLink>
             </li>
             <li>
               <a href="#">

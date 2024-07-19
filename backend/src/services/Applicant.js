@@ -41,6 +41,7 @@ const Applicant = {
                 url_linkedin: applicantData.urlLinkedin ? applicantData.urlLinkedin : null,
                 birthdate: applicantData.birthdate ? applicantData.birthdate : null,
                 image: image ? image.filename : null,
+                gender: applicantData.gender ? applicantData.gender : null,
             });
         } catch (error) {
             throw new Error("Error al crear al aspirante: ", error);
