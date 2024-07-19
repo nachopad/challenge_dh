@@ -1,4 +1,5 @@
 const applicantService = require("../services/Applicant");
+const { validationResult } = require('express-validator');
 
 const applicantApiController = {
     list: async (req, res) => {
@@ -59,6 +60,51 @@ const applicantApiController = {
                     error: "Internal server error",
                     url: `/api/applicants/${req.params.id}`,
                 },
+            });
+        }
+    },
+    create: async (req, res) => {
+        try {
+            const error = validationResult(req);
+            if (error.isEmpty()) {
+                const newApplicant = await applicantService.create(req.body, req.file);
+                return res.status(201).json({
+                    meta: {
+                        status: 201,
+                    },
+                    data: newApplicant
+                });
+            }
+            res.status(400).json({
+                meta: {
+                    status: 400
+                },
+                error: error.mapped()
+            });
+        } catch (error) {
+            res.status(500).json({
+                meta: {
+                    status: 500,
+                    error: 'Internal server error',
+                }
+            });
+        }
+    },
+    update: async (req, res)=>{
+        try {
+            await applicantService.update(req.params.id, req.body, req.file);
+            return res.status(200).json({
+                meta:{
+                    status: 200
+                },
+                message: 'El aplicante se modifico correctamente'
+            });
+        } catch (error) {
+            return res.status(500).json({
+                meta:{
+                    status: 500,
+                    error: 'Internal server error'
+                }
             });
         }
     }
