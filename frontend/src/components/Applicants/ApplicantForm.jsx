@@ -22,7 +22,6 @@ const ApplicantForm = () => {
             await createApplicant(formData);
             reset();
             alert("Aspirante registrado correctamente!", "success");
-            window.location.reload();
             navigate("/");
         } catch (error) {
             console.error("Error al registrar el aspirante:", error);
