@@ -3,6 +3,8 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { InitDataContext } from "../../context/InitDataContext";
 
+import showAlert from "../../utils/sweetalert.js";
+
 const ApplicantForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createApplicant, professions } = useContext(InitDataContext);
@@ -21,11 +23,10 @@ const ApplicantForm = () => {
         try {
             await createApplicant(formData);
             reset();
-            alert("Aspirante registrado correctamente!", "success");
+            showAlert('Aspirante registrado', 'El aspirante se ha registrado correctamente.', 'success');
             navigate("/");
         } catch (error) {
-            console.error("Error al registrar el aspirante:", error);
-            alert("Error al registrar el aspirante.", "error");
+            showAlert('Error', 'Ha ocurrido un error al registrar el aspirante.', 'error');
         }
     };
 

@@ -2,6 +2,8 @@ import { useContext, useEffect, useState } from 'react';
 import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import { InitDataContext } from '../../context/InitDataContext';
 
+import showAlert from "../../utils/sweetalert.js";
+
 function ApplicantDetail() {
     const { id } = useParams();
     const { fetchApplicantById , deleteApplicant } = useContext(InitDataContext);
@@ -34,11 +36,11 @@ function ApplicantDetail() {
     const handleDelete = async () => {
         try {
             await deleteApplicant(aspirantId.id);
-            alert("Aspirante eliminado correctamente!");
+            showAlert("Aspirante eliminado", "El aspirante fue eliminado correctamente.", "success");
             navigate("/");
         } catch (error) {
             console.error("Error al eliminar el aspirante:", error);
-            alert("Error al eliminar el aspirante.");            
+            showAlert("Error", "Ocurrió un error al eliminar el aspirante.", "error");            
         }
     };
 
