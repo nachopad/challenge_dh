@@ -32,7 +32,7 @@ const Applicant = {
     },
     create: async function(applicantData, image){
         try {
-            return await db.Applicants.create({
+            let newApplicant = await db.Applicants.create({
                 dni: applicantData.dni,
                 first_name: applicantData.firstName,
                 last_name: applicantData.lastName,
@@ -43,6 +43,8 @@ const Applicant = {
                 image: image ? image.filename : null,
                 gender: applicantData.gender ? applicantData.gender : null,
             });
+            await db.ApplicantProfessions.create({ applicant_id: newApplicant.id, profession_id: applicantData.profession });
+            return newApplicant;
         } catch (error) {
             throw new Error("Error al crear al aspirante: ", error);
         }

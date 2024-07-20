@@ -55,7 +55,7 @@ module.exports = (sequelize, dataType) => {
     Applicant.associate = (models) => {
         Applicant.belongsToMany(models.Professions, {
             as: "professions",
-            through: "applicant_professions",
+            through: models.ApplicantProfessions,
             foreignKey: "applicant_id",
             otherKey: "profession_id",
             timestamps: false,
