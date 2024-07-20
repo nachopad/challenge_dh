@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, useNavigate } from 'react-router-dom';
 import { InitDataContext } from '../../context/InitDataContext';
 
 function ApplicantDetail() {
     const { id } = useParams();
-    const { fetchApplicantById } = useContext(InitDataContext);
+    const { fetchApplicantById , deleteApplicant } = useContext(InitDataContext);
     const [aspirantId, setAspirantId] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchAspirant = async () => {
@@ -29,6 +30,18 @@ function ApplicantDetail() {
     if (!aspirantId) {
         return <div>Aspirante no encontrado.</div>;
     }
+
+    const handleDelete = async () => {
+        try {
+            await deleteApplicant(aspirantId.id);
+            alert("Aspirante eliminado correctamente!");
+            window.location.reload();
+            navigate("/");
+        } catch (error) {
+            console.error("Error al eliminar el aspirante:", error);
+            alert("Error al eliminar el aspirante.");            
+        }
+    };
 
     return ( 
         <div className="container mt-5">
@@ -61,6 +74,7 @@ function ApplicantDetail() {
                                 ))}
                             </ul>
                             <NavLink to="/" className="btn btn-primary mt-3 ">Volver</NavLink>
+                            <button className="btn btn-danger mt-3 ms-3" onClick={handleDelete}>Eliminar</button>
                         </div>
                     </div>
                 </div>
