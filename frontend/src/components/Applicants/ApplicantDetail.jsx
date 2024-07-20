@@ -35,7 +35,6 @@ function ApplicantDetail() {
         try {
             await deleteApplicant(aspirantId.id);
             alert("Aspirante eliminado correctamente!");
-            window.location.reload();
             navigate("/");
         } catch (error) {
             console.error("Error al eliminar el aspirante:", error);
@@ -52,7 +51,7 @@ function ApplicantDetail() {
                 <div className="card-body">
                     <div className="row">
                         <div className="col-md-4 text-center">
-                            <img src={`/assets/images/${aspirantId.image}`} className="img-fluid rounded-circle mb-3" alt={aspirantId.first_name} />
+                            <img src={`http://localhost:3000/images/applicantProfile/${aspirantId.image}`} className="img-fluid rounded-circle mb-3" alt={aspirantId.first_name} />
                         </div>
                         <div className="col-md-8">
                             <h5 className="card-title">Información Personal</h5>

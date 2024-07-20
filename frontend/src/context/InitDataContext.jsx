@@ -9,15 +9,19 @@ function InitDataProvider({ children }) {
 
   useEffect(() => {
     (async function () {
-      try {
-        const applicantsResponse = await axios.get("http://localhost:3000/api/applicants/");
-        const professionsResponse = await axios.get("http://localhost:3000/api/professions/");
-        setData({ applicants: applicantsResponse.data, professions: professionsResponse.data });
-      } catch (error) {
-        throw new Error(error);
-      }
+      fetchData();
     })();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const applicantsResponse = await axios.get("http://localhost:3000/api/applicants/");
+      const professionsResponse = await axios.get("http://localhost:3000/api/professions/");
+      setData({ applicants: applicantsResponse.data, professions: professionsResponse.data });
+    } catch (error) {
+      throw new Error(error);
+    }
+  }
 
   const fetchApplicantById = async (id) => {
     try {
@@ -36,6 +40,7 @@ function InitDataProvider({ children }) {
           'Content-Type': 'multipart/form-data',
         },
       });
+      fetchData();
       return response.data;
     } catch (error) {
       console.error('Error creating applicant:', error);
@@ -60,6 +65,7 @@ function InitDataProvider({ children }) {
   const deleteApplicant = async (id) => {
     try {
       const response = await axios.delete(`http://localhost:3000/api/applicants/${id}`);
+      fetchData();
       return response.data;
     } catch (error) {
       console.error('Error deleting applicant:', error);
