@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { InitDataContext } from "../../context/InitDataContext";
 
 const ApplicantForm = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createApplicant, professions } = useContext(InitDataContext);
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         const formData = new FormData();
@@ -19,10 +21,12 @@ const ApplicantForm = () => {
         try {
             await createApplicant(formData);
             reset();
-            alert("Aspirante registrado correctamente!");
+            alert("Aspirante registrado correctamente!", "success");
+            window.location.reload();
+            navigate("/");
         } catch (error) {
             console.error("Error al registrar el aspirante:", error);
-            alert("Error al registrar el aspirante.");
+            alert("Error al registrar el aspirante.", "error");
         }
     };
 

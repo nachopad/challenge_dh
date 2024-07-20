@@ -14,12 +14,6 @@ function Sidebar() {
           <h3>Opciones</h3>
           <ul>
             <li>
-              <a href="#">
-                <i className="bi bi-building" style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
-                  Empresas
-              </a>
-            </li>
-            <li>
               <NavLink to="/applicants" className="text-decoration-none gap-2">
                 <i className="bi bi-person-plus" style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
                   Aspirantes

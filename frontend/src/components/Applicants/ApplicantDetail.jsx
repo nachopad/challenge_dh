@@ -35,10 +35,11 @@ function ApplicantDetail() {
         try {
             await deleteApplicant(aspirantId.id);
             alert("Aspirante eliminado correctamente!");
+            window.location.reload();
             navigate("/");
         } catch (error) {
             console.error("Error al eliminar el aspirante:", error);
-            alert("Error al eliminar el aspirante.");
+            alert("Error al eliminar el aspirante.");            
         }
     };
 
