@@ -5,7 +5,7 @@ const showAlert = (title, text, icon, button) => {
       title: title || "Default Title",
       text: text || "Default Text",
       icon: icon || "info",
-      button: button || "Ok",
+      confirmButtonText: button || "Ok",
     });
   };
 
