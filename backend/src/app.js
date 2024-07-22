@@ -1,8 +1,8 @@
 // ************ Require's ************ //
+require('dotenv').config();
 const express = require('express');
 const path = require('node:path');
 const cors = require('cors');
-
 
 // ************ express() - (don't touch) ************ //
 const app = express();
