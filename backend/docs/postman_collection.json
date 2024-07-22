@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "d8ab76ef-f91e-47c3-9e82-777e43232129",
+		"name": "RecruitingRH - Digital House",
+		"description": "Esta colección de Postman contiene todos los endpoints necesarios para interactuar con la API de RecruitingRH. La API proporciona acceso a los datos de aspirantes y profesiones, permitiendo realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre estos recursos.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24236034"
+	},
+	"item": [
+		{
+			"name": "Applicants",
+			"item": [
+				{
+					"name": "getApplicants",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/applicants/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"applicants",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getApplicantById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/applicants/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"applicants",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createApplicant",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": \"42341241\",\r\n    \"firstName\": \"Fernando\",\r\n    \"lastName\": \"Alonso\",\r\n    \"email\": \"fer_alonso@gmail.com\",\r\n    \"phone\": \"388421542\",\r\n    \"urlLinkedin\": \"https://www.linkedin.com/in/fernando-alonso/\",\r\n    \"birthdate\": \"2000-05-15\",\r\n    \"gender\": \"Masculino\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/applicants/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"applicants",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateApplicant",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dni\": \"38941241\",\r\n    \"firstName\": \"José\",\r\n    \"lastName\": \"Rodriguez\",\r\n    \"email\": \"joserodri@gmail.com\",\r\n    \"phone\": \"38830412\",\r\n    \"urlLinkedin\": \"https://www.linkedin.com/in/jose-rodriguez/\",\r\n    \"birthdate\": \"1995-02-30\",\r\n    \"gender\": \"Masculino\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/applicants/update/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"applicants",
+								"update",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteApplicant",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/applicants/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"applicants",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Contiene todos los endpoints relacionados con los aspirantes."
+		},
+		{
+			"name": "Professions",
+			"item": [
+				{
+					"name": "getProfessions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/professions/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"professions",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Contiene todos los endpoints relacionados con las profesiones."
+		}
+	]
+}
