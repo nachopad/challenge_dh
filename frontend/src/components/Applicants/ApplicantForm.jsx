@@ -18,15 +18,20 @@ const ApplicantForm = () => {
                 formData.append(key, data[key]);
             } else if (data[key] && key === "image") {
                 formData.append("image", data[key][0]);
+            } else if (data[key] && key == "profession") {
+                data[key].forEach((profession) => {
+                    formData.append("profession[]", profession);
+                })
             }
         }
+
         try {
             await createApplicant(formData);
             reset();
-            showAlert('Aspirante registrado', 'El aspirante se ha registrado correctamente.', 'success');
+            showAlert('Aspirante registrado', 'El aspirante se ha registrado correctamente.', 'success' , 'Ok');
             navigate("/");
         } catch (error) {
-            showAlert('Error', 'Ha ocurrido un error al registrar el aspirante.', 'error');
+            showAlert('Error', 'Ha ocurrido un error al registrar el aspirante.', 'error', 'Ok');
         }
     };
 
@@ -40,7 +45,7 @@ const ApplicantForm = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="firstName" className="form-label">
-                            Nombre
+                            <b className="fs-4">Nombre</b>
                         </label>
                         <input
                             type="text"
@@ -58,7 +63,7 @@ const ApplicantForm = () => {
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="lastName" className="form-label">
-                            Apellido
+                            <b className="fs-4">Apellido</b>
                         </label>
                         <input
                             type="text"
@@ -79,7 +84,7 @@ const ApplicantForm = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="email" className="form-label">
-                            Email
+                            <b className="fs-4">Email</b>
                         </label>
                         <input
                             type="email"
@@ -99,7 +104,7 @@ const ApplicantForm = () => {
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="dni" className="form-label">
-                            DNI
+                            <b className="fs-4">DNI</b>
                         </label>
                         <input
                             type="text"
@@ -120,7 +125,7 @@ const ApplicantForm = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="phone" className="form-label">
-                            Telefono
+                            <b className="fs-4">Teléfono</b>
                         </label>
                         <input
                             type="text"
@@ -138,7 +143,7 @@ const ApplicantForm = () => {
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="urlLinkedin" className="form-label">
-                            LinkedIn URL
+                            <b className="fs-4">LinkedIn URL</b>
                         </label>
                         <input
                             type="text"
@@ -161,7 +166,7 @@ const ApplicantForm = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="birthdate" className="form-label">
-                            Fecha de Nacimiento
+                            <b className="fs-4">Fecha de Nacimiento</b>
                         </label>
                         <input
                             type="date"
@@ -175,7 +180,7 @@ const ApplicantForm = () => {
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="image" className="form-label">
-                            Foto de Perfil
+                                <b className="fs-4">Foto de Perfil</b>
                         </label>
                         <input
                             type="file"
@@ -192,28 +197,28 @@ const ApplicantForm = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="profession" className="form-label">
-                            Profesion
+                        <b className="fs-4">Profesion </b> <i>( use ctrl + click para seleccionar multiples )</i>
+                            
                         </label>
                         <select
-                            className="form-control"
+                            className={`form-control ${errors.profession ? 'is-invalid' : ''}`}
                             id="profession"
+                            multiple
                             {...register("profession", { required: "Profesion es requerida" })}
                         >
-                            <option value="">Selecciona</option>
-                            {professions &&
-                                professions.map((profession) => (
-                                    <option key={profession.id} value={profession.id}>
-                                        {profession.title}
-                                    </option>
-                                ))}
+                            {professions && professions.map((profession) => (
+                                <option key={profession.id} value={profession.id}>
+                                    {profession.title}
+                                </option>
+                            ))}
                         </select>
                         {errors.profession && (
-                            <div className="text-danger">{errors.profession.message}</div>
+                            <div className="invalid-feedback">{errors.profession.message}</div>
                         )}
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="gender" className="form-label">
-                            Genero
+                            <b className="fs-4">Genero</b>
                         </label>
                         <div id="gender" className="form-check">
                             <input
@@ -224,7 +229,7 @@ const ApplicantForm = () => {
                                 {...register("gender", { required: "Genero es requerido" })}
                             />
                             <label htmlFor="genderMale" className="form-check-label">
-                                Masculino
+                                <b>Masculino</b>
                             </label>
                         </div>
                         <div className="form-check">
@@ -236,7 +241,7 @@ const ApplicantForm = () => {
                                 {...register("gender", { required: "Genero es requerido" })}
                             />
                             <label htmlFor="genderFemale" className="form-check-label">
-                                Femenino
+                                <b>Femenino</b>
                             </label>
                         </div>
                         {errors.gender && (

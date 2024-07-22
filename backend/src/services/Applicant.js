@@ -31,6 +31,7 @@ const Applicant = {
         }
     },
     create: async function(applicantData, image){
+        const transaction = await db.sequelize.transaction();
         try {
             let newApplicant = await db.Applicants.create({
                 dni: applicantData.dni,
@@ -42,8 +43,19 @@ const Applicant = {
                 birthdate: applicantData.birthdate ? applicantData.birthdate : null,
                 image: image ? image.filename : null,
                 gender: applicantData.gender ? applicantData.gender : null,
-            });
-            await db.ApplicantProfessions.create({ applicant_id: newApplicant.id, profession_id: applicantData.profession });
+            }, { transaction });
+
+            if (applicantData.profession) {
+                const professionIds = applicantData.profession.split(',').map(id => parseInt(id.trim(), 10));
+                for (const professionId of professionIds) {
+                    await db.ApplicantProfessions.create({
+                        applicant_id: newApplicant.id,
+                        profession_id: professionId
+                    }, { transaction });
+                }
+            }
+
+            await transaction.commit();
             return newApplicant;
         } catch (error) {
             throw new Error("Error al crear al aspirante: ", error);

@@ -36,11 +36,11 @@ function ApplicantDetail() {
     const handleDelete = async () => {
         try {
             await deleteApplicant(aspirantId.id);
-            showAlert("Aspirante eliminado", "El aspirante fue eliminado correctamente.", "success");
+            showAlert("Aspirante eliminado", "El aspirante fue eliminado correctamente.", "success" , "Ok");
             navigate("/");
         } catch (error) {
             console.error("Error al eliminar el aspirante:", error);
-            showAlert("Error", "Ocurrió un error al eliminar el aspirante.", "error");            
+            showAlert("Error", "Ocurrió un error al eliminar el aspirante.", "error", "Ok");            
         }
     };
 
