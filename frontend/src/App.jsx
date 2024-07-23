@@ -1,33 +1,74 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route,BrowserRouter as Router } from 'react-router-dom'
+import Home from './components/Home'
+import ApplicantDetail from './components/Applicants/ApplicantDetail'
+import Sidebar from './components/Sidebar'
+import TopBar from './components/TopBar'
+import SearchBar from './components/Applicants/SearchBar'
+import ApplicantsList from './components/Applicants/ApplicantsList'
+import ProfessionsList from './components/Professions/ProfessionsList'
+import ApplicantForm from './components/Applicants/ApplicantForm'
+import Team from './components/Team'
+
+const routes = [
+  {
+    path: '/',
+    component: <Home />,
+    exact: true
+  },
+  {
+    path: '/search',
+    component: <SearchBar />,
+    exact: true
+  },
+  {
+    path: '/applicants',
+    component: <div className="content-wrap"> <ApplicantsList /> </div>,
+    exact: true 
+  },
+  {
+    path: '/applicant/:id',
+    component: <ApplicantDetail />,
+    exact: true
+  },
+  {
+    path: '/register/aplicant',
+    component: <div className="content-wrap"> <ApplicantForm /> </div>,
+    exact: true 
+  },
+  {
+    path: '/professions',
+    component: <div className="content-wrap"> <ProfessionsList /> </div>,
+    exact: true 
+  },
+  {
+    path: '/team',
+    component: <div className="content-wrap"> <Team /> </div>,
+    exact: true 
+  }
+]
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="dashboard">
+      <section className="search-wrap">
+        <TopBar />
+      </section>
+      <header className="menu-wrap">
+        <Sidebar />
+      </header>
+      <Routes>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            element={route.component}
+            exact={route.exact}
+          />
+        ))}
+      </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
