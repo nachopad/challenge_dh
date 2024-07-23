@@ -10,7 +10,7 @@ function ProfessionsList() {
 
   return (
     <div className="list-group shadow-sm p-3 mb-5 rounded">
-      <h4 className="list-group-item list-group-item-action active text-center" aria-current="true">
+      <h4 className="list-group-item list-group-item-action active text-center mt-2 fs-4 text-white bg-primary p-3 rounded-top" aria-current="true">
         Listado de Profesiones
       </h4>
       {professions?.map(profession => (

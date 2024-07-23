@@ -36,16 +36,16 @@ const ApplicantForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="container p-4 bg-light rounded shadow-lg">
-            <div className="card-header text-center bg-primary text-white p-3 fs-3">
-                <h2 className="mb-0 ">Registro de Aspirante</h2>
+        <form onSubmit={handleSubmit(onSubmit)} className="container p-5 bg-light rounded shadow">
+            <div className="card-header text-center bg-primary text-white ">
+                <h2 className="mb-0 p-3 fs-4">Registro de Aspirante</h2>
             </div>
 
             <div className="card-body mt-3">
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="firstName" className="form-label">
-                            <b className="fs-4">Nombre</b>
+                            <b className="fs-5">Nombre</b>
                         </label>
                         <input
                             type="text"
@@ -63,7 +63,7 @@ const ApplicantForm = () => {
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="lastName" className="form-label">
-                            <b className="fs-4">Apellido</b>
+                            <b className="fs-5">Apellido</b>
                         </label>
                         <input
                             type="text"
@@ -84,7 +84,7 @@ const ApplicantForm = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="email" className="form-label">
-                            <b className="fs-4">Email</b>
+                            <b className="fs-5">Email</b>
                         </label>
                         <input
                             type="email"
@@ -104,7 +104,7 @@ const ApplicantForm = () => {
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="dni" className="form-label">
-                            <b className="fs-4">DNI</b>
+                            <b className="fs-5">DNI</b>
                         </label>
                         <input
                             type="text"
@@ -125,7 +125,7 @@ const ApplicantForm = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="phone" className="form-label">
-                            <b className="fs-4">Teléfono</b>
+                            <b className="fs-5">Teléfono</b>
                         </label>
                         <input
                             type="text"
@@ -143,7 +143,7 @@ const ApplicantForm = () => {
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="urlLinkedin" className="form-label">
-                            <b className="fs-4">LinkedIn URL</b>
+                            <b className="fs-5">LinkedIn URL</b>
                         </label>
                         <input
                             type="text"
@@ -166,7 +166,7 @@ const ApplicantForm = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="birthdate" className="form-label">
-                            <b className="fs-4">Fecha de Nacimiento</b>
+                            <b className="fs-5">Fecha de Nacimiento</b>
                         </label>
                         <input
                             type="date"
@@ -180,7 +180,7 @@ const ApplicantForm = () => {
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="image" className="form-label">
-                                <b className="fs-4">Foto de Perfil</b>
+                                <b className="fs-5">Foto de Perfil</b>
                         </label>
                         <input
                             type="file"
@@ -197,7 +197,7 @@ const ApplicantForm = () => {
                 <div className="row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="profession" className="form-label">
-                        <b className="fs-4">Profesion </b> <i>( use ctrl + click para seleccionar multiples )</i>
+                        <b className="fs-5">Profesion </b> <i>( use ctrl + click para seleccionar multiples )</i>
                             
                         </label>
                         <select
@@ -218,7 +218,7 @@ const ApplicantForm = () => {
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="gender" className="form-label">
-                            <b className="fs-4">Genero</b>
+                            <b className="fs-5">Genero</b>
                         </label>
                         <div id="gender" className="form-check">
                             <input
@@ -250,7 +250,7 @@ const ApplicantForm = () => {
                     </div>
                 </div>
 
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn btn-primary w-100 mt-1 fs-5">
                     Registrar 
                 </button>
             </div>

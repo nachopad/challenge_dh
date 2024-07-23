@@ -45,7 +45,7 @@ function ApplicantDetail() {
     };
 
     return ( 
-        <div className="container mt-5">
+        <div className="content-wrap">
             <div className="card shadow-lg">
                 <div className="card-header text-center bg-primary text-white">
                     <h2>{aspirantId.first_name} {aspirantId.last_name}</h2>
