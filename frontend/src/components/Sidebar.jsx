@@ -26,16 +26,16 @@ function Sidebar() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/applicants/register" className="text-decoration-none gap-2">
+              <NavLink to="/register/aplicant" className="text-decoration-none gap-2">
                 <i className="bi bi-person-vcard " style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
                   Registrate aqui
               </NavLink>
             </li>
             <li>
-              <a href="#">
+              <NavLink to="/team" className="text-decoration-none gap-2">
                 <i className="bi bi-chat-left-text" style={{ fontSize: '1.2rem', color: 'cornflowerblue' }}></i>
-                  Contacto
-              </a>
+                  Nosotros
+              </NavLink>
             </li>
           </ul>
         </section>

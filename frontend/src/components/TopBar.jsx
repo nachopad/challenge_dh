@@ -20,16 +20,17 @@ function TopBar() {
       <div className="search">
         <form className='d-flex gap-1' onSubmit={handleSearchSubmit}>
           <label htmlFor="search">
-            <i className="bi bi-search" style={{ fontSize: '1.5rem', color: 'cornflowerblue' }}></i>
+            <i className="bi bi-search mx-2" style={{ fontSize: '1.5rem', color: 'cornflowerblue' }}></i>
             <input
               type="text"
               id="search"
               value={searchTerm}
               onChange={handleSearchChange}
               placeholder="Buscar por profesión..."
+              className='w-100 p-2'
             />
           </label>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn w-25 btn-primary">
             Buscar
           </button>
         </form>
