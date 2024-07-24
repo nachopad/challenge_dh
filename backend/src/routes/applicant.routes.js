@@ -9,5 +9,6 @@ router.get('/:id', applicantController.listOne);
 router.delete('/:id', applicantController.delete);
 router.post('/register', uploadFile.single('image') ,  registerValidation, applicantController.create);
 router.put('/update/:id', applicantController.update);
+router.post('/', applicantController.create);
 
 module.exports = router;

@@ -1,4 +1,5 @@
-const applicantService = require("../services/Applicant");
+const applicantService = require('../services/Applicant');
+const emailService = require('../services/emailService'); // Envio de email
 const { validationResult } = require('express-validator');
 
 const applicantApiController = {
@@ -68,19 +69,23 @@ const applicantApiController = {
             const error = validationResult(req);
             if (error.isEmpty()) {
                 const newApplicant = await applicantService.create(req.body, req.file);
-                return res.status(201).json({
+                res.status(201).json({
                     meta: {
                         status: 201,
                     },
                     data: newApplicant
                 });
+
+                // Enviar correo de confirmación
+                await emailService.sendRegistrationEmail(newApplicant.email, newApplicant.first_name);
+            } else {
+                res.status(400).json({
+                    meta: {
+                        status: 400
+                    },
+                    error: error.mapped()
+                });
             }
-            res.status(400).json({
-                meta: {
-                    status: 400
-                },
-                error: error.mapped()
-            });
         } catch (error) {
             res.status(500).json({
                 meta: {
@@ -90,18 +95,18 @@ const applicantApiController = {
             });
         }
     },
-    update: async (req, res)=>{
+    update: async (req, res) => {
         try {
             await applicantService.update(req.params.id, req.body, req.file);
             return res.status(200).json({
-                meta:{
+                meta: {
                     status: 200
                 },
                 message: 'El aplicante se modifico correctamente'
             });
         } catch (error) {
             return res.status(500).json({
-                meta:{
+                meta: {
                     status: 500,
                     error: 'Internal server error'
                 }
